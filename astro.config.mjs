@@ -14,5 +14,10 @@ export default defineConfig({
     "/linkedin": "https://linkedin.com/in/joeldanielrico",
     "/steam": "https://steamcommunity.com/id/jjoeldaniel/",
     "/resume": "https://linkedin.com/in/joeldanielrico/resume/blob/main/resume.pdf"
+  },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+    },
   }
 });
