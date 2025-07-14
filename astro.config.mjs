@@ -1,19 +1,18 @@
 import { defineConfig } from "astro/config";
-import vercel from '@astrojs/vercel/serverless';
 
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-    output: 'hybrid',
-    adapter: vercel(),
-    integrations: [tailwind()],
-    redirects:
-    {
-        "/github": "https://github.com/jjoeldaniel",
-        "/gh": "https://github.com/jjoeldaniel",
-        "/resume": "https://github.com/jjoeldaniel/resume/blob/main/resume.pdf",
-        "/linkedin": "https://www.linkedin.com/in/joeldanielrico",
-        "/mastadon": "https://mastodon.social/@jjoel",
-    }
+  output: 'static',
+  integrations: [],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  redirects: {
+    "/github": "https://github.com/jjoeldaniel",
+    "/linkedin": "https://linkedin.com/in/joeldanielrico",
+    "/steam": "https://steamcommunity.com/id/jjoeldaniel/",
+    "/resume": "https://linkedin.com/in/joeldanielrico/resume/blob/main/resume.pdf"
+  }
 });

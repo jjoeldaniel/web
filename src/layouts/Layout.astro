@@ -1,6 +1,6 @@
 ---
+import '../styles/global.css'
 import Nav from "../components/Nav.astro";
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
     title: string;
@@ -17,13 +17,12 @@ const site_description =
         <meta charset="UTF-8" />
         <meta
             name="description"
-            content="Tech blog centered on college life, computer science, and more."
+            content={site_description}
         />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
-        <ViewTransitions />
     </head>
     <body>
         <!-- Desktop view -->
