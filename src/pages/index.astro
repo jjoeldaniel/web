@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import portraitImage from "../images/joel.jpg";
 import LinkCard from "../components/LinkCard.astro";
 import LinkCardClipboard from "../components/LinkCardClipboard.astro";
@@ -27,9 +27,18 @@ import LinkCardClipboard from "../components/LinkCardClipboard.astro";
   <body class="bg-[#fddd53] font-[Funnel_Display]">
     <div class="m-auto flex flex-col md:mt-20 mt-12 mb-8">
       <header class="text-center">
-        <Image src={portraitImage} alt="Picture of cat" class="rounded-full m-auto mb-6 w-42"/>
-        <h1 class="font-bold text-4xl mb-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1  hover:scale-120 hover:text-indigo-400">Joel Daniel Rico</h1>
-        <span class="font-semibold text-lg">Software Engineer</span>
+        <Image
+          src={portraitImage}
+          alt="Picture of cat"
+          class="rounded-full m-auto mb-6 w-42"
+        />
+
+        <h1
+          class="inline-block font-bold text-4xl mb-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120 hover:text-indigo-400"
+        >
+          Joel Daniel Rico
+        </h1>
+        <span class="block font-semibold text-lg">Software Engineer</span>
       </header>
       <main>
         <ul class="space-y-6 my-6">
@@ -65,7 +74,10 @@ import LinkCardClipboard from "../components/LinkCardClipboard.astro";
             <li>
               <div class="flex justify-between gap-4">
                 <LinkCardClipboard title="🎙️ Discord" text="jjoeldaniel" />
-                <LinkCard title="🕹️ Steam" url="https://steamcommunity.com/id/jjoeldaniel/" />
+                <LinkCard
+                  title="🕹️ Steam"
+                  url="https://steamcommunity.com/id/jjoeldaniel/"
+                />
               </div>
             </li>
           </ul>
