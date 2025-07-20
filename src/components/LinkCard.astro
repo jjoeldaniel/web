@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title = "Card Title", url = "https://google.com" } = Astro.props;
+
+// For desktop view
+const url_label = (() => {
+  let label = url;
+  if (label.includes("//")) {
+    label = label.split("//")[1];
+  }
+  if (label.includes("www.")) {
+    label = label.split("www.")[1];
+  }
+  return label;
+})();
+---
+
+<div
+  class="border-3 border-black bg-[#fff3d3] rounded-4xl w-xs h-16 m-auto grid place-content-center transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-400 hover:text-white hover:font-bold"
+>
+  <h3 class="text-lg text-center">
+    <a href={url} target="_blank">{title}</a>
+  </h3>
+</div>
