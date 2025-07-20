@@ -3,7 +3,9 @@ import "../styles/global.css";
 import { Image } from "astro:assets";
 import mainImage from "../images/main_image.png";
 import LinkCard from "../components/LinkCard.astro";
+import LinkCardMini from "../components/LinkCardMini.astro";
 import LinkCardClipboard from "../components/LinkCardClipboard.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 ---
 
 <html lang="en">
@@ -19,70 +21,84 @@ import LinkCardClipboard from "../components/LinkCardClipboard.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Meet Joel!</title>
+    <script is:inline>
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "light");
+      } else
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme"),
+        );
+    </script>
+    <script>
+      import { themeChange } from "theme-change";
+      themeChange();
+    </script>
   </head>
+</html>
 
-  <!-- primary - #fddd53 -->
-  <!-- secondary - #fff3d3 -->
+<body class="h-screen font-[Funnel_Display] relative">
+  <label class="swap swap-rotate absolute top-4 right-4 z-10">
+    <ThemeSwitcher />
+  </label>
 
-  <body class="bg-[#fddd53] font-[Funnel_Display]">
-    <div class="m-auto flex flex-col md:mt-20 mt-12 mb-8">
-      <header class="text-center">
-        <Image
-          src={mainImage}
-          alt="Earth with two clouds"
-          class="rounded-full m-auto mb-6 w-42"
-        />
+  <div class="m-auto flex flex-col md:pt-20 pt-12 mb-8 px-4">
+    <header class="text-center">
+      <Image
+        src={mainImage}
+        alt="Earth with two clouds"
+        class="rounded-full m-auto mb-6 w-42"
+      />
 
-        <h1
-          class="inline-block font-bold text-4xl mb-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120 hover:text-indigo-400"
-        >
-          Joel Daniel Rico
-        </h1>
-        <span class="block font-semibold text-lg">Software Engineer</span>
-      </header>
-      <main>
-        <ul class="space-y-6 my-6">
+      <h1
+        class="inline-block font-bold text-4xl mb-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120"
+      >
+        Joel Daniel Rico
+      </h1>
+      <span class="block font-semibold text-lg">Software Engineer</span>
+    </header>
+    <main>
+      <ul class="space-y-6 my-6">
+        <li>
+          <LinkCard
+            title="🖥️ GitHub: Check my projects!"
+            url="https://github.com/jjoeldaniel"
+          />
+        </li>
+        <li>
+          <LinkCard
+            title="🏢 LinkedIn: Let's connect :)"
+            url="https://linkedin.com/in/joeldanielrico"
+          />
+        </li>
+        <li>
+          <LinkCard
+            title="📜 Resume: Where I've been"
+            url="https://github.com/jjoeldaniel/resume/blob/main/resume.pdf"
+          />
+        </li>
+      </ul>
+      <div>
+        <h2 class="text-2xl font-semibold text-center">Get in Touch</h2>
+        <ul class="space-y-6 mt-6 max-w-xs mx-auto">
           <li>
             <LinkCard
-              title="🖥️ GitHub: Check my projects!"
-              url="https://github.com/jjoeldaniel"
+              title="✉️ Send me an email!"
+              url="mailto:joeldanielrico@gmail.com"
             />
           </li>
+
           <li>
-            <LinkCard
-              title="🏢 LinkedIn: Let's connect :)"
-              url="https://linkedin.com/in/joeldanielrico"
-            />
-          </li>
-          <li>
-            <LinkCard
-              title="📜 Resume: Where I've been"
-              url="https://github.com/jjoeldaniel/resume/blob/main/resume.pdf"
-            />
+            <div class="flex justify-between gap-4">
+              <LinkCardClipboard title="🎙️ Discord" text="jjoeldaniel" />
+              <LinkCardMini
+                title="🕹️ Steam"
+                url="https://steamcommunity.com/id/jjoeldaniel/"
+              />
+            </div>
           </li>
         </ul>
-        <div>
-          <h2 class="text-2xl font-semibold text-center">Get in Touch</h2>
-          <ul class="space-y-6 mt-6 max-w-xs mx-auto">
-            <li>
-              <LinkCard
-                title="✉️ Send me an email!"
-                url="mailto:joeldanielrico@gmail.com"
-              />
-            </li>
-
-            <li>
-              <div class="flex justify-between gap-4">
-                <LinkCardClipboard title="🎙️ Discord" text="jjoeldaniel" />
-                <LinkCard
-                  title="🕹️ Steam"
-                  url="https://steamcommunity.com/id/jjoeldaniel/"
-                />
-              </div>
-            </li>
-          </ul>
-        </div>
-      </main>
-    </div>
-  </body>
-</html>
+      </div>
+    </main>
+  </div>
+</body>
