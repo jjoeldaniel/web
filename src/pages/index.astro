@@ -21,19 +21,6 @@ import ThemeSwitcher from "../components/ThemeSwitcher.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Meet Joel!</title>
-    <script is:inline>
-      if (localStorage.getItem("theme") === null) {
-        document.documentElement.setAttribute("data-theme", "light");
-      } else
-        document.documentElement.setAttribute(
-          "data-theme",
-          localStorage.getItem("theme"),
-        );
-    </script>
-    <script>
-      import { themeChange } from "theme-change";
-      themeChange();
-    </script>
   </head>
 </html>
 

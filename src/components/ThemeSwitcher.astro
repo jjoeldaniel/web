@@ -1,10 +1,40 @@
 <script is:inline>
   document.addEventListener("DOMContentLoaded", function () {
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      document.getElementById("theme-input").value = "silk";
+    const themeController = document.getElementById("theme-input");
+
+    // Function to set the theme
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+      if (theme === "business") {
+        themeController.checked = true;
+      } else {
+        themeController.checked = false;
+      }
+    };
+
+    // Event listener for the theme controller
+    themeController.addEventListener("change", (e) => {
+      if (e.target.checked) {
+        setTheme("business");
+      } else {
+        setTheme("silk");
+      }
+    });
+
+    // Check for saved theme in local storage
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        setTheme("business");
+      } else {
+        setTheme("silk");
+      }
     }
   });
 </script>
@@ -20,7 +50,7 @@
 
   <!-- sun icon -->
   <svg
-    class="swap-off h-10 w-10 fill-current"
+    class="swap-on h-10 w-10 fill-current"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
   >
@@ -31,7 +61,7 @@
 
   <!-- moon icon -->
   <svg
-    class="swap-on h-10 w-10 fill-current"
+    class="swap-off h-10 w-10 fill-current"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
   >
