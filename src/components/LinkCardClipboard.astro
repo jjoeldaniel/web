@@ -7,13 +7,12 @@ interface Props {
 const { title = "Card Title", text = "Default text to copy" } = Astro.props;
 ---
 
-<div
+<button
+  id="copy-button"
   class="btn btn-xl m-auto grid place-content-center transition delay-150 duration-300 ease-in-out hover:-translate-y-1"
 >
-  <h3 class="text-lg text-center">
-    <button id="copy-button">{title}</button>
-  </h3>
-</div>
+  <h3 class="text-lg text-center">{title}</h3></button
+>
 
 <div
   id="copy-notification"
